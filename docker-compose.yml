@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nodejs:
+    build: .
+    container_name: my_node_app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: my_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+
